@@ -9,7 +9,8 @@ if application "Microsoft Teams" is running then
 	
 	tell application "System Events"
 		tell process "Microsoft Teams"
-			set win_names to name of every window
+			# Microsoft Teams Notification-Window is no good
+			set win_names to (name of every window where name does not contain "Microsoft Teams Notification")
 			log win_names
 			if (count win_names) > 1 then
 				# flip windows to get a focused window

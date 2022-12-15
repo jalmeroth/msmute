@@ -12,7 +12,8 @@ if application "Microsoft Teams" is running then
 			# first round may opens history
 			# lets close it in the second run
 			repeat 2 times
-				set win_names to name of every window
+			# Microsoft Teams Notification-Window is no good
+			set win_names to (name of every window where name does not contain "Microsoft Teams Notification")
 				log win_names
 				# bruteforce which window to close
 				# might opens history view
