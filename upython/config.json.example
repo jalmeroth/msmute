@@ -1,0 +1,7 @@
+{
+    "DEVICE_NAME": "<DEVICE_NAME>",
+    "WIFI_SSID": "<WIFI_SSID>",
+    "WIFI_PASS": "<WIFI_PASS>",
+    "WS_TOKEN": "<WS_TOKEN>",
+    "WS_URI": "<WS_URI>"
+}
