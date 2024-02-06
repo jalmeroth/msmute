@@ -1,42 +1,39 @@
 """Provide mqtt-remote functions."""
 import json
-from machine import Pin, reset
 from time import sleep, ticks_ms
 
-from net import NetworkManager
 from config import Config
 from debounce import Debounce
+from machine import Pin, reset
+from net import NetworkManager
 from uwebsockets import client as ws_client  # https://github.com/danni/uwebsockets
-
 
 CONFIG = Config()
 DEVICE_NAME = getattr(CONFIG, "DEVICE_NAME", "msmute")
 WS_TOKEN = getattr(CONFIG, "WS_TOKEN", "")
 WS_URI = getattr(CONFIG, "WS_URI", "")
 
-ACTIONS = {
-    "toggle-hand": "raise-hand",
-    "toggle-mute": "toggle-mute",
-    "toggle-video": "toggle-video",
-    "leave-call": "call",
-    "query-meeting-state": "query-meeting-state",
-}
-
 
 def button_callback(pin, action):
     """Provide a callback for buttons."""
     print(pin, action)
-    # action = "query-meeting-state"
-    websocket = ws_client.connect(f"{WS_URI}?token={WS_TOKEN}")
+    params = {
+        "app": "Stream%20Deck",
+        "app-version": "2.0.26",
+        "device": "Stream%20Deck",
+        "manufacturer": "Elgato",
+        "protocol-version": "2.0.0",
+        "token": f"{WS_TOKEN}",
+    }
+    paramstr = "&".join([f"{k}={v}" for k, v in params.items()])
+    print(f"{WS_URI}?{paramstr}")
+    websocket = ws_client.connect(f"{WS_URI}?{paramstr}")
     if websocket is None:
         return
     data = {
-        "apiVersion": "1.0.0",
-        "service": ACTIONS[action],
         "action": action,
-        "timestamp": ticks_ms(),
-        "manufacturer": "Elgato",
-        "device": "Stream Deck",
+        "parameters": {},
+        "requestId": 1,
     }
     request = json.dumps(data)
     websocket.send(request)
