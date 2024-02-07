@@ -1,6 +1,9 @@
 """
 Websockets client for micropython
 
+Modified version of https://github.com/danni/uwebsockets
+- introduced query parameter for connect, due to memory restrictions in regex match
+
 Based very heavily off
 https://github.com/aaugustin/websockets/blob/master/websockets/client.py
 """
@@ -21,7 +24,7 @@ class WebsocketClient(Websocket):
     is_client = True
 
 
-def connect(uri):
+def connect(uri, query):
     """
     Connect a websocket.
     """
@@ -46,7 +49,7 @@ def connect(uri):
     # Sec-WebSocket-Key is 16 bytes of random base64 encoded
     key = binascii.b2a_base64(bytes(random.getrandbits(8) for _ in range(16)))[:-1]
 
-    send_header(b"GET %s HTTP/1.1", uri.path or "/")
+    send_header(b"GET %s HTTP/1.1", query or "/")
     send_header(b"Host: %s:%s", uri.hostname, uri.port)
     send_header(b"Connection: Upgrade")
     send_header(b"Upgrade: websocket")
