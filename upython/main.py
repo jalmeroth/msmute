@@ -18,16 +18,15 @@ def button_callback(pin, action):
     """Provide a callback for buttons."""
     print(pin, action)
     params = {
-        "app": "Stream%20Deck",
-        "app-version": "2.0.26",
-        "device": "Stream%20Deck",
-        "manufacturer": "Elgato",
+        "app": "msmute",
+        "app-version": "1.0",
+        "device": "wemos-d1-mini",
+        "manufacturer": "jalmeroth",
         "protocol-version": "2.0.0",
         "token": f"{WS_TOKEN}",
     }
     paramstr = "&".join([f"{k}={v}" for k, v in params.items()])
-    print(f"{WS_URI}?{paramstr}")
-    websocket = ws_client.connect(f"{WS_URI}?{paramstr}")
+    websocket = ws_client.connect(WS_URI, f"/?{paramstr}")
     if websocket is None:
         return
     data = {
