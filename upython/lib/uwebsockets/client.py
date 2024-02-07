@@ -2,7 +2,7 @@
 Websockets client for micropython
 
 Modified version of https://github.com/danni/uwebsockets
-- introduced query parameter for connect, due to memory restrictions in regex match
+- introduced query parameter for connect to work around memory restrictions in re match
 
 Based very heavily off
 https://github.com/aaugustin/websockets/blob/master/websockets/client.py

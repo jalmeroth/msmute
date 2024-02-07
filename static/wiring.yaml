@@ -1,0 +1,14 @@
+connectors:
+  Wemos:
+    pincount: 4
+  Shield:
+    pincount: 4
+
+cables:
+  W1:
+    wirecount: 4
+
+connections:
+  - - Wemos: [1-4]
+    - W1: [1-4]
+    - Shield: [1-4]
