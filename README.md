@@ -10,16 +10,21 @@ A macro pad to control Microsoft Teams (via WebSocket) while you are on-call.
 - Microcontroller (e.g. [Wemos D1 mini](https://www.wemos.cc/en/latest/d1/d1_mini.html))
   - Wemos D1 mini [ProtoBoard Shield](https://www.wemos.cc/en/latest/d1_mini_shield/protoboard.html)
 - 4x [Arcade Buttons](https://www.amazon.de/dp/B075DCB7LT)
-- Various Jumper Wires & Resistors (10k/1k)
+- Various Jumper Wires & Resistors (4x10k/1x1k)
 
 ## Build a MS Mute device
 
 ### Assembly
 
+!["MS Mute Shield Front"](./static/msmute-shield-front.jpeg "MS Mute Shield Front")
+!["MS Mute Shield back"](./static/msmute-shield-back.jpeg "MS Mute Shield back")
+
 > [!WARNING]
 > This is still under development
 
 !["Wiring"](./static/wiring.png "Wiring")
+
+!["MS Mute connected"](./static/msmute-connected.jpeg "MS Mute connected")
 
 ### Flashing MicroPython
 
