@@ -39,8 +39,8 @@ For more information on flashing MicroPython to the microcontroller take a look 
 You can use `adafruit-ampy` to copy the files to your board. Checkout the tutorial here: <https://learn.adafruit.com/micropython-basics-load-files-and-run-code/overview>.
 
 ```sh
-# switch working directory to `upython`
-cd upython
+# switch working directory to `src`
+cd src
 # copy all files to the microcontroller
 ampy --port /dev/ttyUSB1 put ./ /
 ```
